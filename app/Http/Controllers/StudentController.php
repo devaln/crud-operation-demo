@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::latest()->paginate(10);
-        return view('students.index',compact('students'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('students.index',compact('students'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -41,7 +41,7 @@ class StudentController extends Controller
         'middle_name' => 'required',
         'last_name' => 'required',
         'contact' => 'required',
-        'date_of_birth' => 'required',
+        'date_of_birth' => 'required|before:6 months',
         'gender' => 'required'
         ]);
 

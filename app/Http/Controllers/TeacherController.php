@@ -15,7 +15,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::latest()->paginate(10);
-        return view('teachers.index',compact('teachers'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('teachers.index',compact('teachers'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
